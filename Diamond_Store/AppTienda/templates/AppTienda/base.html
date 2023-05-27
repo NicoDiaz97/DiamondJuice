@@ -17,15 +17,15 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
 
+  <!-- Template Main CSS File -->
+  <link href="{% static '/css/style.css' %}" rel="stylesheet">
+
   <!-- Vendor CSS Files -->
   <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
   <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
   <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
   <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
   <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="{% static '/css/style.css' %}" rel="stylesheet">
 
 
 </head>
@@ -45,9 +45,12 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="{% url 'inicio' %}">Inicio</a></li>
-          <li><a class="nav-link scrollto" href="#about">Quienes somos</a></li>
+          {% comment %} <li><a class="nav-link scrollto" href="#about">Quienes somos</a></li> {% endcomment %}
           <li><a class="nav-link scrollto" href="{% url 'galeria-productos' %}">Tienda</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          {% if user.is_authenticated %}
+          <li><a class="nav-link scrollto" href="{% url 'crear-pedido' %}">Hacé tu pedido</a></li>
+          {% endif %}
+          {% comment %} <li><a class="nav-link scrollto" href="#contact">Contact</a></li> {% endcomment %}
           {% if not user.is_authenticated %}
           <li class="dropdown"><a href="#"><span>Acceder</span> <i class="bi bi-chevron-down"></i></a>
             <ul>

@@ -1,0 +1,62 @@
+{% extends 'AppTienda/base.html' %} 
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
+
+
+{% block contenido %}
+<div class='boton-back' >
+    <a href="{% url 'galeria-productos' %}">
+        <i class="bi bi-arrow-left-circle"></i> Volver
+    </a>
+</div>
+
+<div class="contenedor-producto">
+{% comment %} <div class="contenedor-producto"> {% endcomment %}
+  <div class="card">
+    <div class="row g-0">
+      <div class="col-md-6 border-end">
+        <div class="d-flex flex-column justify-content-center">
+          <div class="main_image">
+            <img
+              src="{{object.imagen.url}}"
+              id="main_product_image"
+              width="350"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-3 right-side">
+          <div class="d-flex justify-content-between align-items-center">
+            <h3>Diamond Juice {{object.nombre}}</h3>
+          </div>
+          <div class="mt-2 pr-3 content">
+            <p>
+              {{object.descripcion}}
+            </p>
+          </div>
+          <h3>${{object.precio_min}}</h3>
+          <div class="mt-5">
+            <span class="fw-bold">Tamaños:</span>
+            <div class="colors">
+              <ul id="marker">
+                <li id="marker-1">30ML</li>
+                <li id="marker-2">60ML</li>
+                <li id="marker-3">120ML</li>
+              </ul>
+            </div>
+          </div>
+          {% comment %} <div class="buttons d-flex flex-row mt-5 gap-3">
+            <button class="btn btn-outline-dark">Buy Now</button>
+            <button class="btn btn-dark">Add to Basket</button>
+          </div> {% endcomment %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock contenido %}

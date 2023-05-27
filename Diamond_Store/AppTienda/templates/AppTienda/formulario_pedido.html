@@ -1,0 +1,63 @@
+{% extends 'AppTienda/base.html' %} 
+
+{% block contenido %}
+
+<div class="formulario-pedido">
+    <form action="{% url 'crear-pedido' %}" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="TipoPedido">Tipo de pedido:</label>
+            <select name="tipo_retiro" class="form-control" id="tipo_retiro">
+                <option>----- Elija una opción -----</option>
+                <option>Envío a domicilio</option>
+                <option>Retiro en sucursal</option>
+            </select>
+
+            <label for="DireccionEnvio" id="titulo-direccion" hidden>
+                Dirección de envío:
+            </label>
+            <input
+                type="text"
+                name="direccion_envio"
+                class="form-control"
+                id="direccion_envio"
+                aria-describedby="emailHelp"
+                placeholder="Ingrese la dirección"
+                hidden
+            />
+            <small id="desc-direccion" class="form-text text-muted" hidden
+                >Ingrese calle, altura, piso y departamento (en caso de ser
+                necesario) y entrecalles (opcional).
+            </small>
+        </div>
+        <div class="form-group">
+            <label for="Comentarios">Comentarios sobre el pedido:</label>
+            <input
+                type="text"
+                name="comentarios_adicionales"
+                class="form-control"
+                id="comentarios_adicionales"
+                placeholder="Escriba comentarios adicionales sobre el envio (opcional)."
+            />
+        </div>
+        <div class="form-group form-check">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById("tipo_retiro").onchange = function () {
+        if (this.value == "Envío a domicilio") {
+            document.getElementById("titulo-direccion").hidden = false;
+            document.getElementById("direccion_envio").hidden = false;
+            document.getElementById("desc-direccion").hidden = false;
+        } else {
+            document.getElementById("titulo-direccion").hidden = true;
+            document.getElementById("direccion_envio").hidden = true;
+            document.getElementById("desc-direccion").hidden = true;
+        }
+    };
+</script>
+
+{% endblock contenido %}
