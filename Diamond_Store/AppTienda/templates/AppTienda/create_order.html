@@ -1,0 +1,44 @@
+{% extends 'AppTienda/base.html' %}
+
+{% block contenido %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<form id="pedidos-articulos" method="POST">
+    {% csrf_token %}
+    {{ pedido_form.as_p }}
+    {{ articulos_formset.management_form }}
+    {% for form in articulos_formset %}
+    <div class='articulo-form'>
+        {{ form.as_p }}
+    </div>
+    {% endfor %}
+
+    <input type="button" name="Agregar" value='Agregar articulo' id="add-form">
+    <input type="submit" value="Crear pedido">
+</form>
+
+
+<script>
+    let ArticulosForm   = document.querySelectorAll(".articulo-form")
+    let container       = document.querySelector("#pedidos-articulos")
+    let addButton       = document.querySelector("#add-form")
+    let totalForms = document.querySelector("#id_form-TOTAL_FORMS")
+
+    let formNum = ArticulosForm.length-1
+    addButton.addEventListener('click', addForm)
+
+    function addForm(e){
+            e.preventDefault()
+
+            let newForm = ArticulosForm[0].cloneNode(true)
+            let formRegex = RegExp(`form-(\\d){1}-`,'g')
+
+            formNum++
+            newForm.innerHTML = newForm.innerHTML.replace(formRegex, `form-${formNum}-`)
+            container.insertBefore(newForm, addButton)
+            
+            totalForms.setAttribute('value', `${formNum+1}`)
+        }
+
+</script>
+{% endblock contenido %}

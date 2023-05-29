@@ -2,5 +2,98 @@
 
 {% block contenido %}
 
+<h1>Insertar articulos al pedido {{ pedido.id }}</h1>
+<form method="post" action="{% url 'agregar-articulos' pedido.id %}">
+  {% csrf_token %}
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre del articulo</th>
+        <th>Cantidad</th>
+        <th>Precio</th>
+      </tr>
+    </thead>
+    <tbody id="articulos">
+      <!-- Aquí se agregarán los campos del formulario dinámicamente con JavaScript -->
+    </tbody>
+  </table>
+  <button type="button" id="agregar">Agregar articulo</button>
+  <button type="submit" id="insertar">Insertar articulos</button>
+</form>
+<script>
+  // Obtener el elemento tbody donde se agregarán los campos del formulario
+  var articulos = document.getElementById("articulos");
+  // Obtener el elemento button que agrega un nuevo campo al formulario
+  var agregar = document.getElementById("agregar");
+  // Agregar un evento click al botón agregar
+  agregar.addEventListener("click", function() {
+    // Crear un nuevo elemento tr para contener los campos del formulario
+    var tr = document.createElement("tr");
+    // Crear un nuevo elemento td para contener el campo nombre
+    var td_nombre = document.createElement("td");
+    // Crear un nuevo elemento input para el campo nombre
+    var input_nombre = document.createElement("input");
+    // Asignar el atributo name al input nombre con el valor "nombre"
+    input_nombre.setAttribute("name", "nombre");
+    // Asignar el atributo type al input nombre con el valor "text"
+    input_nombre.setAttribute("type", "text");
+    // Agregar el input nombre al td nombre
+    td_nombre.appendChild(input_nombre);
+    // Agregar el td nombre al tr
+    tr.appendChild(td_nombre);
+    // Crear un nuevo elemento td para contener el campo cantidad
+    var td_cantidad = document.createElement("td");
+    // Crear un nuevo elemento input para el campo cantidad
+    var input_cantidad = document.createElement("input");
+    // Asignar el atributo name al input cantidad con el valor "cantidad"
+    input_cantidad.setAttribute("name", "cantidad");
+    // Asignar el atributo type al input cantidad con el valor "number"
+    input_cantidad.setAttribute("type", "number");
+    // Agregar el input cantidad al td cantidad
+    td_cantidad.appendChild(input_cantidad);
+    // Agregar el td cantidad al tr
+    tr.appendChild(td_cantidad);
+    // Crear un nuevo elemento td para contener el campo precio
+    var td_precio = document.createElement("td");
+    // Crear un nuevo elemento input para el campo precio
+    var input_precio = document.createElement("input");
+    // Asignar el atributo name al input precio con el valor "precio"
+    input_precio.setAttribute("name", "precio");
+    // Asignar el atributo type al input precio con el valor "number"
+    input_precio.setAttribute("type", "number");
+    // Agregar el input precio al td precio
+    td_precio.appendChild(input_precio);
+    // Agregar el td precio al tr
+    tr.appendChild(td_precio);
+    // Agregar el tr al tbody articulos
+    articulos.appendChild(tr);
+  });
+</script>
+
+    {% comment %} <form action="{% url 'agregar-articulos' id_pedido %}" method="POST">
+        {% csrf_token %}
+        <fieldset>
+            <legend>lista_articulos</legend>
+            <select>
+                <option value="">-- Seleccione producto --</option>
+                {% for item in productos %}
+                <option value="{{ item.id }}">{{ item.nombre }}</option>
+                {% endfor %}
+            </select>
+            <select>
+                <option value="">-- Seleccione producto --</option>
+                {% for item in productos %}
+                <option value="{{ item.id }}">{{ item.nombre }}</option>
+                {% endfor %}
+            </select>
+            <select>
+                <option value="">-- Seleccione producto --</option>
+                {% for item in productos %}
+                <option value="{{ item.id }}">{{ item.nombre }}</option>
+                {% endfor %}
+            </select>
+        </fieldset>
+        <input type='submit'>
+    </form> {% endcomment %}
 
 {% endblock contenido %}

@@ -1,0 +1,27 @@
+{% extends 'AppTienda/base.html' %}
+
+{% block contenido %}
+
+<h1>Detalle del pedido {{ pedido.id }}</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Id del articulo</th>
+      <th>Nombre del articulo</th>
+      <th>Cantidad</th>
+      <th>Precio</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for articulo in articulos %}
+    <tr>
+      <td>{{ articulo.id }}</td>
+      <td>{{ articulo.nombre }}</td>
+      <td>{{ articulo.cantidad }}</td>
+      <td>{{ articulo.precio }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock contenido %}
