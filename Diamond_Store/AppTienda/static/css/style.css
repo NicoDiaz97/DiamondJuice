@@ -1574,3 +1574,9 @@ body {
 .formulario-pedido{
   padding: 2rem;
 }
+.table_crear_pedidos{
+  border: 5px solid;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}

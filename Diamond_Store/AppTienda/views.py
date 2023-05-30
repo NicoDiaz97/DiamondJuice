@@ -1,3 +1,5 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
@@ -23,6 +25,14 @@ class visualizarProductoDetailView(DetailView):
     model       = Producto
     success_url = reverse_lazy('galeria_productos')
 
+class visualizar_pedidosListView(LoginRequiredMixin, ListView):
+    # model           = Pedido
+    # queryset        = Pedido.objects.filter(user__exact=)
+    template_name   = 'AppTienda/pedidos.html'
+    def get_queryset(self) -> QuerySet[Any]:
+        return Pedido.objects.filter(user=self.request.user)
+
+@login_required
 def pedido_detail(request, pedido_id):
     # Obtener el pedido por su id o devolver un error 404 si no existe
     pedido = get_object_or_404(Pedido, id=pedido_id)
@@ -44,13 +54,9 @@ def crear_pedido(request):
                 articulo = articulo_form.save(commit=False)
                 articulo.pedido_id = pedido
                 articulo.save()
-            return redirect('galeria-productos')
+            return redirect('ver-pedido', pedido.id)
     else:
         pedido_form = PedidoForm()
         articulos_formset = ArticulosPedidoFormSet(queryset=ArticulosPedido.objects.none())
         context = {"pedido_form": pedido_form, "articulos_formset": articulos_formset}
-        return render(request, 'AppTienda/create_order.html', context)
-        # articulos_formset = ArticulosPedidoFormSet(queryset=ArticulosPedido.objects.none())
-        # context = {"pedido_form": pedido_form, "articulos_formset": articulos_formset}
-        # context['articulos_empty_form'] = articulos_formset.empty_form
-        # return render(request, 'AppTienda/create_order.html', context)
+        return render(request, 'AppTienda/crearpedido.html', context)

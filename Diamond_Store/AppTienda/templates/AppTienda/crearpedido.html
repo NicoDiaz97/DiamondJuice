@@ -1,0 +1,71 @@
+{% extends 'AppTienda/base.html' %}
+{% load static %}
+{% block contenido %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link href="{% static '/css/pedido.css' %}" rel="stylesheet">
+
+<form class="class-form-pedido" id="pedidos-articulos" method="POST">
+    {% csrf_token %}
+    <div class="card border-primary mb-3" style="max-width: 18rem;">
+        <center>
+            <div class="card-header">Crear pedido</div>
+                <div class="card-body text-primary">
+                    <h5 class="card-title">Datos del pedido:</h5>
+                    <p class="card-text">{{ pedido_form }}</p>
+                </div>
+            </div>
+        </center>
+    </div>
+    
+    <div class='articulo-form'>
+        <div class="card border-dark mb-3" style="max-width: 18rem;">
+                <div class="card-header">Articulos</div>
+                    <div class="card-body text-dark">
+                        <h5 class="card-title">Agregue articulos:</h5>
+                        {{ articulos_formset.management_form }}
+                        {% for form in articulos_formset %}
+                        <p class="card-text" >{{ form }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+        </div>
+    </div>
+    
+    <input type="button" name="Agregar" value='Agregar articulo' id="add-form" class="btn btn-info">
+    <br>
+    <input type="submit" value="Crear pedido" class="btn btn-primary">
+</form>
+
+
+<script>
+    $("#id_tipo_retiro").addClass("form-select");
+    $("#id_direccion_envio").addClass("form-control");
+    $("#id_comentarios_adicionales").addClass("form-control");
+
+    $("#id_form-0-producto").addClass("form-select");
+    $("#id_form-0-cantidad").addClass("form-control");
+
+
+    let ArticulosForm   = document.querySelectorAll(".articulo-form")
+    let container       = document.querySelector("#pedidos-articulos")
+    let addButton       = document.querySelector("#add-form")
+    let totalForms = document.querySelector("#id_form-TOTAL_FORMS")
+
+    let formNum = ArticulosForm.length-1
+    addButton.addEventListener('click', addForm)
+
+    function addForm(e){
+            e.preventDefault()
+
+            let newForm = ArticulosForm[0].cloneNode(true)
+            let formRegex = RegExp(`form-(\\d){1}-`,'g')
+
+            formNum++
+            newForm.innerHTML = newForm.innerHTML.replace(formRegex, `form-${formNum}-`)
+            container.insertBefore(newForm, addButton)
+            
+            totalForms.setAttribute('value', `${formNum+1}`)
+        }
+
+</script>
+{% endblock contenido %}

@@ -49,6 +49,7 @@
           <li><a class="nav-link scrollto" href="{% url 'galeria-productos' %}">Tienda</a></li>
           {% if user.is_authenticated %}
           <li><a class="nav-link scrollto" href="{% url 'crear-pedido' %}">Hacé tu pedido</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'pedidos' %}">Pedidos</a></li>
           {% endif %}
           {% comment %} <li><a class="nav-link scrollto" href="#contact">Contact</a></li> {% endcomment %}
           {% if not user.is_authenticated %}

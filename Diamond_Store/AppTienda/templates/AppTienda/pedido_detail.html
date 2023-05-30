@@ -1,27 +1,72 @@
 {% extends 'AppTienda/base.html' %}
-
+{% load static %}
 {% block contenido %}
 
-<h1>Detalle del pedido {{ pedido.id }}</h1>
+<link href="{% static '/css/pedido.css' %}" rel="stylesheet">
+
+<div class="container mt-5 d-flex justify-content-center">
+  <div class="card p-4 mt-3">
+     <div class="first d-flex justify-content-between align-items-center mb-3">
+       <div class="info">
+           <span class="d-block name">Pedido Nro: #{{ pedido.id }}</span>           
+       </div>
+      
+        <img src="https://i.imgur.com/NiAVkEw.png" width="40"/>
+         
+
+     </div>
+         <div class="detail">
+          <table class="table table-bordered">
+            <thead class="thead-dark">
+              <tr>
+                <th><center>Producto</center></th>
+                <th><center>Cantidad</center></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for articulo in articulos %}
+              <tr>
+                <td>{{ articulo.producto }}</td>
+                <td><center>{{ articulo.cantidad }}</center></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+         </div>
+     <hr>
+     <div class="text">
+   <span class="d-block new mb-1" >{{user.first_name}} {{user.last_name}}</span>
+    </div>
+   <span class="d-block address mb-3">672 Conaway Street Bryantiville Massachusetts 02327</span>
+     <div class="  money d-flex flex-row mt-2 align-items-center">
+       {% comment %} <img src="https://i.imgur.com/ppwgjMU.png" width="20" /> {% endcomment %}
+   
+       {% comment %} <span class="ml-2">Cash on Delivery</span>  {% endcomment %}
+
+          </div>
+          <div class="last d-flex align-items-center mt-3">
+           <span class="address-line">CHANGE MY DELIVERY ADDRESS</span>
+
+          </div>
+   </div>
+</div>
+
+{% comment %} <h1>Detalle del pedido #{{ pedido.id }}</h1>
 <table>
   <thead>
     <tr>
-      <th>Id del articulo</th>
       <th>Nombre del articulo</th>
       <th>Cantidad</th>
-      <th>Precio</th>
     </tr>
   </thead>
   <tbody>
     {% for articulo in articulos %}
     <tr>
-      <td>{{ articulo.id }}</td>
-      <td>{{ articulo.nombre }}</td>
+      <td>{{ articulo.producto }}</td>
       <td>{{ articulo.cantidad }}</td>
-      <td>{{ articulo.precio }}</td>
     </tr>
     {% endfor %}
   </tbody>
-</table>
+</table> {% endcomment %}
 
 {% endblock contenido %}

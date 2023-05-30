@@ -1,0 +1,58 @@
+{% extends 'AppTienda/base.html' %}
+{% load static %}
+{% block contenido %}
+
+<link href="{% static '/css/pedidos.css' %}" rel="stylesheet">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
+
+<div class="div-table-pedidos">
+    <div class="row">
+        <div class="col-md-offset-1">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12">
+                            <a href="{% url 'crear-pedido' %}" class="btn btn-sm btn-primary pull-left"><i class="fa fa-plus-circle"></i> Cargar pedido</a>
+                            <form class="form-horizontal pull-right">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th><center>Nro de pedido</center></th>
+                                <th><center>Fecha de pedido</center></th>
+                                <th><center>Tipo de pedido</center></th>
+                                <th><center>Detalle del pedido</center></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in object_list %}
+                            <tr>
+                                <td><center>{{ item.id }}</center></td>
+                                <td><center>{{ item.fecha_pedido }}</center></td>
+                                {% if item.tipo_retiro == 'D' %}
+                                <td><center>Envío a domicilio</center></td>
+                                {% elif item.tipo_retiro == 'R' %}
+                                <td><center>Retiro en sucursal</center></td>
+                                {% endif %}
+                                <td><center><a href="{% url 'ver-pedido' item.id %}" class="btn btn-sm btn-success"><i class="fa fa-search"></i></a></center></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock contenido %}

@@ -17,8 +17,13 @@ class Producto(models.Model):
         return self.nombre
 
 class Pedido(models.Model):
+    TIPO_RETIRO = [
+        ('D', 'Envío a domicilio'),
+        ('R', 'Retiro en sucursal'),
+    ]
     user                    = models.ForeignKey(User,on_delete=models.CASCADE)
-    tipo_retiro             = models.CharField(max_length=100)
+    fecha_pedido            = models.DateField(auto_now_add=True)
+    tipo_retiro             = models.CharField(max_length=100, choices=TIPO_RETIRO)
     direccion_envio         = models.CharField(max_length=1000, blank=True)
     comentarios_adicionales = models.CharField(max_length=1000)
 
