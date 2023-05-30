@@ -27,6 +27,7 @@
                                 <th><center>Fecha de pedido</center></th>
                                 <th><center>Tipo de pedido</center></th>
                                 <th><center>Detalle del pedido</center></th>
+                                <th><center>Eliminar pedido</center></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -40,6 +41,7 @@
                                 <td><center>Retiro en sucursal</center></td>
                                 {% endif %}
                                 <td><center><a href="{% url 'ver-pedido' item.id %}" class="btn btn-sm btn-success"><i class="fa fa-search"></i></a></center></td>
+                                <td><center><a href="{% url 'eliminar-pedido' item.id %}" class="btn btn-danger"><i class="fa fa-times"></i></a></center></td>
                             </tr>
                             {% endfor %}
                         </tbody>

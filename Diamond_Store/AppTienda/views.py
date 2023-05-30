@@ -26,8 +26,6 @@ class visualizarProductoDetailView(DetailView):
     success_url = reverse_lazy('galeria_productos')
 
 class visualizar_pedidosListView(LoginRequiredMixin, ListView):
-    # model           = Pedido
-    # queryset        = Pedido.objects.filter(user__exact=)
     template_name   = 'AppTienda/pedidos.html'
     def get_queryset(self) -> QuerySet[Any]:
         return Pedido.objects.filter(user=self.request.user)
@@ -60,3 +58,7 @@ def crear_pedido(request):
         articulos_formset = ArticulosPedidoFormSet(queryset=ArticulosPedido.objects.none())
         context = {"pedido_form": pedido_form, "articulos_formset": articulos_formset}
         return render(request, 'AppTienda/crearpedido.html', context)
+
+class eliminar_pedidoDeleteView(LoginRequiredMixin, DeleteView):
+    model       = Pedido
+    success_url = reverse_lazy('pedidos')

@@ -1,0 +1,21 @@
+{% extends 'AppTienda/base.html' %}
+
+{% block contenido %}
+
+<form method="POST">
+    {% csrf_token %}
+    <div class="card bg-light mb-3" style="max-width: 18rem;">
+        <div class="card-header">Eliminar pedido</div>
+        <div class="card-body">
+            <h5 class="card-title">¿Estás seguro de eliminar el pedido #{{object.id}}?</h5>
+            <p class="card-text">En caso de que el pedido ya esté preparado, la cancelación no se hará efectiva y deberás abonar el pedido.</p>
+            <p>Pedido con fecha: {{ object.fecha_pedido }}</p>
+            <center>
+            <a class="btn btn-info" href="{% url 'pedidos' %}"> Cancelar </a>
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+            </center>
+        </div>
+    </div>
+</form>
+
+{% endblock contenido %}

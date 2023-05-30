@@ -46,7 +46,7 @@
         <ul>
           <li><a class="nav-link scrollto active" href="{% url 'inicio' %}">Inicio</a></li>
           {% comment %} <li><a class="nav-link scrollto" href="#about">Quienes somos</a></li> {% endcomment %}
-          <li><a class="nav-link scrollto" href="{% url 'galeria-productos' %}">Tienda</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'galeria-productos' %}">Productos</a></li>
           {% if user.is_authenticated %}
           <li><a class="nav-link scrollto" href="{% url 'crear-pedido' %}">Hacé tu pedido</a></li>
           <li><a class="nav-link scrollto" href="{% url 'pedidos' %}">Pedidos</a></li>
@@ -94,7 +94,7 @@
 
           <div class="col-lg-4 col-md-6 footer-info">
             <h3 class="ecommerce">Diamond Juice</h3>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
+            <p>Diamond Juice - Sitio web desarrollado por Nicolás Díaz</p>
           </div>
 
 
@@ -102,20 +102,7 @@
       </div>
     </div>
 
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong>NewBiz</strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!--
-        All the links in the footer should remain intact.
-        You can delete the links only if you purchased the pro version.
-        Licensing information: https://bootstrapmade.com/license/
-        Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=NewBiz
-      -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
+
   </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
