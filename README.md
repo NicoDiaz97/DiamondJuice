@@ -27,6 +27,11 @@
 + Ejecuta el server con ```python manage.py runserver```
 + Listo!, podrás ingresar al sitio con la url genérica ```http://127.0.0.1:8000/```
 
+<br><br>
+
+## Como correr el test
++ Ubicado sobre el directorio Diamond_Store, ejecutar el comando ```python manage.py test```
++ Se ejecutará el test creado
 
 <br><br>
 
