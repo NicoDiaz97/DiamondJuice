@@ -24,7 +24,7 @@ urlpatterns = [
     path('', inicio, name='inicio'),
     path('about/', acerca_de_mi, name='about-me' ),
     path('admin/', admin.site.urls),
-    path('perfiles/', include('AppPerfiles.urls')),
+    path('accounts/', include('AppPerfiles.urls')),
     path('tienda/', include('AppTienda.urls'))
 ]
 

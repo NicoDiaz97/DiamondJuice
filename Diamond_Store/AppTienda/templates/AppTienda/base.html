@@ -39,7 +39,7 @@
       <div class="logo">
         <!-- Uncomment below if you prefer to use an text logo -->
         <!-- <h1><a href="index.html">NewBiz</a></h1> -->
-        <a href="index.html"><img src="{% static 'img/logoDiamond.png' %}"></a>
+        <a href="{% url 'inicio' %}"><img src="{% static 'img/logoDiamond.png' %}"></a>
       </div>
 
       <nav id="navbar" class="navbar">
@@ -61,12 +61,17 @@
             </ul>
           </li>
           {% else %}
+          {% if user.avatar %}
+          <li class="dropdown"><a href="#"><img src="{{ user.avatar.imagen.url }}" alt="{{ user.username }}" class="rounded-circle" width="50" height="50" style="margin-right: 10px"><span>{{user.username}}</span> <i class="bi bi-chevron-down"></i></a>
+          {% else %}
           <li class="dropdown"><a href="#"><span>{{user.username}}</span> <i class="bi bi-chevron-down"></i></a>
+          {% endif %}
             <ul>
               {% if user.username == 'admin' %}
               <li><a href="{%  url 'admin:index' %}">Panel administrativo</a></li>
               {% endif %}
               <li><a href="{%  url 'editar-perfil' %}">Editar perfil</a></li>
+              <li><a href="{%  url 'agregar-avatar' %}">Cargar avatar</a></li>
               <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
             </ul>
           </li>
@@ -88,7 +93,7 @@
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer">
+  {% comment %} <footer id="footer">
     <div class="footer-top">
       <div class="container">
         <div class="row">
@@ -104,21 +109,14 @@
     </div>
 
 
-  </footer><!-- End Footer -->
+  </footer> {% endcomment %}
+
+
+  <footer id="footer">
+      <h3 class="ecommerce">Diamond Juice</h3>
+  </footer>
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Vendor JS Files -->
-  <!-- <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script> -->
-
-  <!-- Template Main JS File -->
-  <!-- <script src="assets/js/main.js"></script> -->
 
 </body>
 
