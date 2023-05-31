@@ -59,6 +59,23 @@ def crear_pedido(request):
         context = {"pedido_form": pedido_form, "articulos_formset": articulos_formset}
         return render(request, 'AppTienda/crearpedido.html', context)
 
+# @login_required    
+# def editar_pedido(request, id):
+#     pedido = get_object_or_404(Pedido, id=id)
+#     if request.method == 'POST':
+#         pedido_form = PedidoForm(request.POST, instance=pedido)
+#         articulos_formset = ArticulosPedidoFormSet(request.POST, instance=pedido)
+#         if pedido_form.is_valid() and articulos_formset.is_valid():
+#             pedido_form.save()
+#             articulos_formset.save()
+#             return redirect('ver-pedido', pedido.id)
+#     else:
+#         pedido_form = PedidoForm(instance=pedido)
+#         articulos_formset = ArticulosPedidoFormSet(instance=pedido)
+#         context = {"pedido_form": pedido_form, "articulos_formset": articulos_formset}
+#         return render(request, 'AppTienda/crearpedido.html', context)
+
+
 class eliminar_pedidoDeleteView(LoginRequiredMixin, DeleteView):
     model       = Pedido
     success_url = reverse_lazy('pedidos')

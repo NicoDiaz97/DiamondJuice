@@ -1,0 +1,26 @@
+{% extends 'AppTienda/base.html' %}
+
+{% load static %}
+
+
+
+{% block contenido %}
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre mí</title>
+</head>
+<body>
+    <div class="container">
+        <center>
+        <h1>Sobre mí</h1>
+        <img src="{% static '/img/yo.jpg' %}" alt="Mi foto" class='foto-about'>
+        </center>
+        <br>
+        <p class='lead'>Hola, mi nombre es Nicolás Díaz. Soy desarrollador y actualmente me dedico a la programación low-code con Genexus. Hasta el momento estuve involucrado en el desarrollo de dos proyectos, uno es un sistema de gestión interno para una gran empresa Colombiana, y otro en el que actualmente estoy involucrado, es el desarrollo de una aplicación mobile para Android e iOS para una reconocida empresa de combustibles en Argentina.<br><br>Mi plan actual es hacer un cambio en mi día a día y comenzar con el desarrollo en Python, y como me gusta bastante el Front, creo que Django es una excelente opción para tener algo de frontend y backend.</p>
+    </div>
+</body>
+
+{% endblock contenido %}

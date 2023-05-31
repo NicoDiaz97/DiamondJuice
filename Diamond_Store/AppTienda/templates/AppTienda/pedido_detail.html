@@ -37,17 +37,21 @@
      <div class="text">
    <span class="d-block new mb-1" >{{user.first_name}} {{user.last_name}}</span>
     </div>
-   <span class="d-block address mb-3">672 Conaway Street Bryantiville Massachusetts 02327</span>
+
+    {% if pedido.tipo_retiro == 'D' %}
+   <span class="d-block address mb-3">Tipo de pedido: Envío a domicilio <br> {{ pedido.direccion_envio }}</span>
+   {% elif pedido.tipo_retiro == 'R' %}
+   <span class="d-block address mb-3">Tipo de pedido: Retiro en sucursal</span>
+   {% endif %}
      <div class="  money d-flex flex-row mt-2 align-items-center">
        {% comment %} <img src="https://i.imgur.com/ppwgjMU.png" width="20" /> {% endcomment %}
    
        {% comment %} <span class="ml-2">Cash on Delivery</span>  {% endcomment %}
 
           </div>
-          <div class="last d-flex align-items-center mt-3">
-           <span class="address-line">CHANGE MY DELIVERY ADDRESS</span>
 
-          </div>
+        <a class="address-line" href="{% url 'pedidos' %}">VOLVER A PEDIDOS</a>
+
    </div>
 </div>
 

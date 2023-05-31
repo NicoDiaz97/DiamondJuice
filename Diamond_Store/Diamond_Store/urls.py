@@ -18,10 +18,11 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from Diamond_Store.views import inicio
+from Diamond_Store.views import inicio, acerca_de_mi
 
 urlpatterns = [
     path('', inicio, name='inicio'),
+    path('about/', acerca_de_mi, name='about-me' ),
     path('admin/', admin.site.urls),
     path('perfiles/', include('AppPerfiles.urls')),
     path('tienda/', include('AppTienda.urls'))

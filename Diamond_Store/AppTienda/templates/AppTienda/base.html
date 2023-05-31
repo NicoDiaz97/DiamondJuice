@@ -47,6 +47,7 @@
           <li><a class="nav-link scrollto active" href="{% url 'inicio' %}">Inicio</a></li>
           {% comment %} <li><a class="nav-link scrollto" href="#about">Quienes somos</a></li> {% endcomment %}
           <li><a class="nav-link scrollto" href="{% url 'galeria-productos' %}">Productos</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'about-me' %}">Acerca de mí</a></li>
           {% if user.is_authenticated %}
           <li><a class="nav-link scrollto" href="{% url 'crear-pedido' %}">Hacé tu pedido</a></li>
           <li><a class="nav-link scrollto" href="{% url 'pedidos' %}">Pedidos</a></li>

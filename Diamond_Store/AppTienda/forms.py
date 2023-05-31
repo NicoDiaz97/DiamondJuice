@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import modelformset_factory
+from django.forms import modelformset_factory#, inlineformset_factory
 
 from AppTienda.models import Pedido, Producto, ArticulosPedido
 
@@ -16,3 +16,8 @@ class ArticulosForm(forms.Form):
 ArticulosPedidoFormSet = modelformset_factory(
     ArticulosPedido, fields=["producto", "cantidad"]
     )
+
+# ArticulosPedidoFormSet = inlineformset_factory(
+#     Pedido,
+#     ArticulosPedido, fields=["producto", "cantidad"]
+#     )

@@ -1,14 +1,6 @@
-/**
-* Template Name: NewBiz
-* Updated: Mar 10 2023 with Bootstrap v5.2.3
-* Template URL: https://bootstrapmade.com/newbiz-bootstrap-business-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+{% load static %}
 
-/*--------------------------------------------------------------
-# General
---------------------------------------------------------------*/
+
 body {
   background: #fff;
   color: #444;
@@ -1512,11 +1504,13 @@ section {
 
 .div-titulo {
   height: 400px;
+  background-image: url(/static/img/backgroundinicio.jpg);
+  background-size: auto;
 }
 
 #main {
   margin-top: 80px;
-  margin-bottom: 3rem;
+  margin-bottom: 6rem;
 }
 
 body {
@@ -1584,4 +1578,11 @@ body {
   margin: auto;
   width: 50%;
   padding: 10px;
+}
+.foto-about{
+  display: block;
+  text-align: center;
+  border-radius: 30px;
+  width: 200px;
+  height: 200px;
 }
