@@ -1,5 +1,6 @@
 # Video DEMO del proyecto "DiamondJuice"
-<iframe width="560" height="315" src="https://www.youtube.com/embed/9E7bwW4D5ss" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+[![Comprehensive Markdown Crash Course](https://markdown-videos.deta.dev/youtube/9E7bwW4D5ss)](https://youtu.be/9E7bwW4D5ss)
 
 <br><br>
 
